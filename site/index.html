@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>洪伟 Wally Hung · Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f3f1ec;
+    --surface: #fcfbf8;
+    --fg: #1c1b19;
+    --muted: #5c5852;
+    --subtle: #8a847b;
+    --accent: #3d4f63;
+    --rail: #16181d;
+    --rail-fg: #eceae4;
+    --rail-muted: #9aa3ad;
+    --border: #ddd6cb;
+    --rule: #c9c1b5;
+    --sans: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", sans-serif;
+    --display: "Noto Serif SC", "Songti SC", serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); }
+  body { font-family: var(--sans); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  button { font: inherit; cursor: pointer; }
+  .bar {
+    position: sticky; top: 0; z-index: 5;
+    display: flex; justify-content: flex-end; gap: 8px;
+    padding: 12px 20px; background: color-mix(in srgb, var(--bg) 90%, transparent);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+  }
+  .bar button {
+    height: 34px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--surface); color: var(--fg);
+  }
+  .bar button.primary { background: var(--accent); color: #f7f5f1; border-color: var(--accent); }
+  .wrap { max-width: 1080px; margin: 24px auto 64px; padding: 0 16px; }
+  .sheet {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    box-shadow: 0 18px 50px -28px rgb(28 27 25 / 0.35); overflow: hidden;
+  }
+  .layout { display: grid; grid-template-columns: 248px 1fr; }
+  .rail { background: var(--rail); color: var(--rail-fg); padding: 32px 24px 40px; }
+  .kicker { margin: 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rail-muted); }
+  .rail h1 { font-family: var(--display); font-size: 1.85rem; line-height: 1.15; margin: 12px 0 0; font-weight: 600; }
+  .role { margin: 12px 0 0; color: var(--rail-muted); font-size: 14px; }
+  .contact { margin-top: 28px; display: grid; gap: 8px; font-size: 14px; color: var(--rail-muted); }
+  .contact a { color: inherit; text-decoration: none; }
+  .label { margin: 36px 0 14px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rail-muted); font-weight: 500; }
+  .rail h3, .main h2, .main h3, .main h4 { margin: 0; font-weight: 600; }
+  .rail h3 { font-size: 14px; }
+  .skill { margin-top: 16px; }
+  .skill ul { margin: 8px 0 0; padding: 0; list-style: none; color: var(--rail-muted); font-size: 13px; }
+  .skill li + li { margin-top: 6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .chip {
+    border: 1px solid rgb(255 255 255 / 0.12); color: var(--rail-muted);
+    border-radius: 4px; padding: 3px 7px; font-family: var(--mono); font-size: 11px;
+  }
+  .main { padding: 32px 36px 40px; }
+  .head { border-bottom: 1px solid var(--rule); padding-bottom: 18px; }
+  .head p { margin: 0; }
+  .muted { color: var(--muted); }
+  .subtle { color: var(--subtle); font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; }
+  .main h2 { font-family: var(--display); font-size: 1.25rem; margin-top: 28px; }
+  .lead { margin: 12px 0 0; color: var(--muted); font-size: 15px; }
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .metric { border: 1px solid var(--border); background: var(--bg); border-radius: 8px; padding: 12px; }
+  .metric b { display: block; font-family: var(--display); color: var(--accent); font-size: 1.15rem; line-height: 1.15; }
+  .metric span { display: block; margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.35; }
+  .job { margin-top: 36px; }
+  .job-h { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+  .job-h h3 { font-size: 1.02rem; font-weight: 600; }
+  .job-h .who { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .stack span { border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .proj { margin-top: 22px; }
+  .proj-t { display: flex; gap: 12px; align-items: baseline; }
+  .num { font-family: var(--mono); font-size: 12px; color: var(--subtle); }
+  .proj h4 { font-size: 15px; font-weight: 600; }
+  .tags { margin: 4px 0 0 28px; color: var(--subtle); font-size: 12px; }
+  .body, .ctx { margin: 10px 0 0 28px; color: var(--muted); font-size: 14px; }
+  ul.clean { margin: 10px 0 0 28px; padding: 0; list-style: none; font-size: 14px; }
+  ul.clean li + li { margin-top: 8px; }
+  ul.clean strong { font-weight: 600; }
+  ul.results { margin: 12px 0 0 28px; padding: 0 0 0 14px; list-style: none; border-left: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); font-size: 14px; }
+  ul.results li + li { margin-top: 6px; }
+  .block { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--rule); }
+  .ai p { color: var(--muted); font-size: 15px; }
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .main { padding: 24px 18px 32px; }
+    .body, .ctx, ul.clean, ul.results, .tags { margin-left: 0; }
+  }
+  @media print {
+    .bar { display: none; }
+    body { background: white; }
+    .wrap { margin: 0; max-width: none; padding: 0; }
+    .sheet { border: 0; box-shadow: none; border-radius: 0; }
+    .layout { grid-template-columns: 200px 1fr; }
+    .rail, .metric { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .job, .proj, .metric { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<header class="bar">
+  <button type="button" id="lang">English</button>
+  <button type="button" class="primary" id="print">打印 / PDF</button>
+</header>
+<main class="wrap"><article class="sheet" id="sheet"></article></main>
+<script id="data" type="application/json">{"profile":{"name":"Wally Hung","nameZh":"洪伟","phone":"177-4081-7241","email":"hongwei200612@gmail.com","location":"","wechat":"","education":"三峡大学 · 信息与计算科学 · 理学学士 · 2006.09 – 2010.06","certs":""},"zh":{"currentRole":"大数据开发工程师","period":"2023.05 – 至今","company":"心动科技 · TapTap","yearsLabel":"16 年大数据与实时架构","educationLine":"三峡大学 · 信息与计算科学 · 理学学士 · 2006.09 – 2010.06","summary":"16 年大数据与实时计算。前 12 年以开源自建为主：Hadoop / Hive / Spark / Flink / Kafka / Elasticsearch / Kubernetes——唯品会做过 800+ 节点 Hadoop 引擎（源码调优、版本升级与热升级）；拼多多基于 Flink 1.5 / 1.8 做核心引擎研发、性能调优与热重启，并在 15k node 上把 Flink on K8s 做成平台；声网自研 Flink 发行版（merge 社区 900+ patch）。近 3.5 年在心动 TapTap 把同一套能力落到阿里云 DataWorks / MaxCompute / EMR Spark / DLF / Hologres，做成游戏广告、推荐、ADN 与训练的业务结果。能在开源栈和云托管栈之间做选型、迁移、双跑与成本对照，并把线上经验编码为 Agent Skills / Harness。","highlightsTitle":"关键结果","highlights":[{"value":"+2,000 万","label":"首页广告实时特征，保守年增收"},{"value":"CPM +5%","label":"iOS 实时特征补齐后的核心指标"},{"value":"成本 -75%~80%","label":"ADN 实时链路月度成本下降"},{"value":"3.7 → 2.8 PB","label":"DLF 存储治理，小文件 650 万 → 160 万"},{"value":"2,000 万 QPS","label":"声网 Spark routing → Flink 迁移峰值"},{"value":"60 天 → 1 天","label":"声网混合云资源交付周期"}],"skillsTitle":"专业能力","skillGroups":[{"name":"开源计算与存储","items":["Flink 1.5 / 1.8 引擎研发、调优与热重启","Hadoop 引擎：MR / Hive / HDFS / YARN 源码级调优","Flink on YARN / Kubernetes 平台化","Hudi / Paimon 湖仓表格式"]},{"name":"实时采集与检索","items":["Kafka / Flume / Logstash 开发调优","Elasticsearch 多集群（5000+ 节点）","Prometheus / ELK 一体化监控","数仓建模与 Hive / Spark SQL"]},{"name":"阿里云产品","items":["DataWorks / MaxCompute","EMR Serverless Spark + DLF","Hologres / 实时 Flink","湖仓迁移、双跑与成本优化"]},{"name":"工程与语言","items":["Java / Scala / Python / Shell","Kubernetes / Ansible 自动化","Redis / MongoDB / MySQL","150+ Agent Skill / Harness"]}],"stackGroups":[{"name":"开源大数据","items":["Hadoop","Hive","HDFS","YARN","Spark","Flink","Kafka","Flume","Hudi","HBase","Elasticsearch","Kubernetes","Prometheus","ELK"]},{"name":"阿里云托管","items":["DataWorks","MaxCompute","EMR Spark","DLF","Paimon","Hologres","StarRocks","OSS"]}],"experienceTitle":"工作经历","experienceIntro":"前 12 年在开源 Hadoop / Spark / Flink / Kafka / ES 上做引擎与平台：唯品会 Hadoop 引擎核心负责人，拼多多 Flink 1.5 / 1.8 核心引擎研发；近 3.5 年在 TapTap 把这套能力迁到阿里云托管产品，做成游戏广告、推荐、ADN 与训练的业务结果。","jobs":[{"company":"心动科技 · TapTap","role":"大数据开发工程师","period":"2023.05 – 至今","stack":["DataWorks","MaxCompute","EMR Spark","DLF","Paimon","Flink","Hologres","Kafka","StarRocks"],"summary":"负责广告 / 推荐 / ADN 核心数据链路的方案设计、实时与离线架构、成本优化与湖仓升级。对内服务业务团队，对外深度使用并反馈阿里云大数据产品。","projects":[{"title":"游戏广告实时特征体系：从 Android 到 iOS，从项目到平台","period":"2024 – 2025","tags":["实时特征","广告变现","IEM 特征平台","Flink"],"context":"天级特征无法支撑首页广告实时决策，iOS 侧能力缺失，特征开发效率低且难复用到推荐模型。","bullets":[{"lead":"全量实时化","body":"设计并落地 user / item 及 app、material、UGC 维度非天级特征，完成首页推荐实时数据准确归因。"},{"lead":"端侧补齐","body":"将实时特征能力从 Android 扩展到 iOS，补齐关键业务短板，获得业务团队正向反馈。"},{"lead":"平台沉淀","body":"主导首页特征实时化重构，方案同步用于广告与推荐两类核心模型，并沉淀至 IEM 特征平台，提升复用与迭代效率。"}],"results":["首页广告效果提升 2%+，保守折合年收入增加 2,000 万元以上","精细化实时特征工程后核心 CPM 提升约 5%","安装特征与 iOS 特征开发效率显著提升，特征结果可复用于推荐模型"]},{"title":"ADN / 主站实时数据链路重构：用对产品组合同时打成本与时效","period":"2024","tags":["Flink","Hologres","实时数仓","成本优化"],"context":"ADN 日志与串联链路成本高、时效差；主站实时流量分流规则僵化，稳定性问题会放大到后续链路。","bullets":[{"lead":"主站 DWD","body":"重构分流规则，支持动态分流与配置热加载，修复多类缺陷，实现流量自适应与标准化，降低对下游影响。"},{"lead":"ADN 日志实时化","body":"调研数据处理需求并重设计实时方案，在稳定性、查询效率与灵活性上同时提升。"},{"lead":"串联链路","body":"采用 Flink + Hologres 重构 ADN 广告串联数据链路，将实时性提升至约 1 分钟。"},{"lead":"预估日志","body":"完成广告预估日志实时化开发与保障，支撑多个下游消费方的常态化需求。"}],"results":["ADN 请求日志链路月成本降低约 80%（约 4 万元/月）","ADN 串联链路月成本降低约 75%（约 4.5 万元/月），投放效果显著提升"]},{"title":"下一代湖仓架构：从厂商调研、POC 到 PB 级真实业务双跑","period":"2025 – 2026","tags":["Lakehouse","EMR Spark","DLF","迁移","POC"],"context":"公司推进自主可控与 Data + AI 方向，需在保留业务连续性的前提下，评估 MaxCompute 迁出路径，并验证 Spark on 数据湖能否承接广告 / 训练真实负载。","bullets":[{"lead":"选型论证","body":"与多家云厂商及行业数据中台深度交流，明确以开源架构（Spark on 数据湖）为目标形态；完成 Spark on OSS + DLF 关键路径验证，并对 MC 迁移做成本与风险评估。"},{"lead":"真实业务 POC → MVP","body":"针对 ADN iOS 模型训练输出端到端可行性报告，并将 POC 扩大为真实迁移 workflow：schema / 类型对齐、DDL 对比、数据同步、任务元数据迁移、任务翻译、数据验证。"},{"lead":"Runtime 负责","body":"主导 DataWorks + EMR Serverless Spark + DLF 运行环境问题排查与多方协同，覆盖权限注入、UDF/函数语义、Paimon scan、snapshot 过期、资源不足、长任务稳定性。"},{"lead":"迁移服务化","body":"建设全增量同步、T-3 截断、分区适配、动态表范围、历史缺失分区回补、元数据/schema 一致性、owner 转交、生命周期修复，支撑 900+ 表进入双跑。"},{"lead":"存储与查询治理","body":"推进 DLF 存储治理；用 Spark 作业链路与 StarRocks 物化视图将部分 BI 查询从约 75s 优化到 200ms 级。"},{"lead":"训练场景落地","body":"协助 IEM 推荐训练团队将样本处理与训练 IO 切到 EMR Spark + DLF，粗排模型「数据处理 + 训练」从 1.5 天降至 0.5 天。"},{"lead":"产品缺口回流","body":"围绕权限/资源隔离、联邦查询、Kyuubi / KB Gateway、session 复用、跨语言 UDF 等卡点形成问题清单与方案判断，推动产品能力对齐湖仓落地。"}],"results":["存储 3.7PB 优化到 2.8PB，小文件 650 万降至 160 万","ADN 迁移进入双跑，风险在双跑中被系统性收敛，为割接与降本对齐奠基","新架构在训练与 BI 场景打出可量化的效率优势，形成可复制迁移 SOP"]},{"title":"运行时稳定性与关键组件升级","period":"2026","tags":["Kafka","Hologres","流批一体","EOS"],"context":"主 Kafka 集群高峰带宽打满；Hologres 老版本面临产品 EOS 及与周边组件的兼容性故障。","bullets":[{"lead":"Kafka","body":"推动消费组自动创建能力变更，缓解流量高峰期带宽打满。"},{"lead":"Hologres","body":"主导 2.2 → 4.x 升级，解决 EOS 风险及因版本不兼容引发的线上故障。"},{"lead":"流批一体","body":"持续验证 DW / Spark / Flink / Holo / StarRocks / DLF / 湖仓表之间的端到端链路，补齐监控、告警、容量评估与故障定位 SOP。"}],"results":["把单点迁移工具推进为完整运行体系：Runtime、权限边界、存储迁移与数据一致性闭环","用周报持续暴露 DW + Spark + DLF 功能缺口与运行风险，形成可复用问题清单"]}]},{"company":"哔哩哔哩","role":"资深研发工程师（3-3）","period":"2022.09 – 2022.12","stack":["Flink","Kubernetes","Hudi","Kafka"],"summary":"加入实时计算团队，负责 Flink 容器化，以及 Flink + Apache Hudi 湖仓基建的搭建与业务支持。这是开源实时引擎入湖的完整一环，也是后来在 TapTap 做湖仓一体的引擎侧手感。","bullets":[{"lead":"Flink 容器化","body":"负责实时计算团队 Flink 作业容器化落地，把作业交付、扩缩容从物理集群解耦到 Kubernetes。"},{"lead":"Flink + Hudi","body":"参与 Flink 结合 Apache Hudi 的实时入湖链路：作业接入、表格式、compaction / 运维支持，服务业务入湖需求。"}]},{"company":"声网 Agora","role":"架构师 / Leader","period":"2020.08 – 2022.09","stack":["Flink","Spark","YARN","Kafka","Prometheus","Elasticsearch","Jenkins"],"summary":"主导开源 Flink 实时计算平台从调研到自研发行版稳定迭代（YARN 部署），并同时负责 Elasticsearch 稳定性、Prometheus 监控一体化和混合云交付。音视频场景对延迟与故障恢复的要求，直接对应后来游戏侧的实时数据底座。","bullets":[{"lead":"自研 Flink 发行版","body":"设计 Agora 自有 Flink 实时计算平台，简化组件依赖，迭代三个版本；基于 YARN REST API 做作业监控；merge 社区 900+ patch（FLIP-145 TVF / 152 Hive 兼容 / 165 火焰图 / 136 流表互操作 / 162 时间函数），并用 Jenkins 建立社区标准 CI/CD，方便业务提交 patch。"},{"lead":"引擎能力","body":"优化维度表 temporal join 与延迟数据即时 join，治理状态泄漏；提供 SQL 脚手架与公共 UDF；Kafka sink 支持 dynamic topic，idle source 水位自增。"},{"lead":"Spark → Flink 迁移","body":"将承担上报日志分发的 Spark routing（峰值约 2000 万 QPS）迁到 Flink，涉及作业 100+，压住高峰波动并提升资源利用率。"},{"lead":"监控一体","body":"用 Prometheus 收敛原先 Zabbix / InfluxDB / OpenTSDB 多套体系，打通主机 / 组件 / 业务与 owner，监控覆盖提升 90%；告警规则 0 → 120+，指标 10000+。"},{"lead":"ES 稳定性","body":"统一集群配置与灰度变更，自动摘盘重启，日志 + JMX + exporter 告警，稳定性从 95% 提升到 99.9%。"},{"lead":"混合云与成本","body":"推动国内数据中心方案与混合云初步建设；29 个集群 / 300+ 老网络服务器改造、200+ 过保下线；资源交付周期 60 天 → 1 天，组件交付 7 天 → 4 小时。"}],"results":["实时计算从「能跑」做成可迭代的公司级平台，并具备多数据中心互监控与业务切换支撑","私有化 / 混合云交付能力成型，为后续安全合规和快速复制打下基础"]},{"company":"拼多多","role":"架构师 / Flink 核心引擎研发","period":"2018.04 – 2020.07","stack":["Flink 1.5 / 1.8","Kubernetes","Kafka","HDFS","Elasticsearch"],"summary":"Flink 核心引擎研发：基于 Flink 1.5 / 1.8 做引擎开发、性能调优、热重启 / 热更新与 checkpoint 治理；同时把 Flink on Kubernetes 做成可量化的计算平台，并负责 100+ Elasticsearch 集群。电商大促下的配额、超卖与跨集群恢复，是后来做云上成本与弹性方案的底子。","bullets":[{"lead":"Flink 核心引擎","body":"基于 Flink 1.5 / 1.8 做引擎侧研发与源码级调优：热重启 / 热更新缩短作业发布与验证时长；增量 checkpoint 与小文件合并保障长作业稳定；参与 JM/TM 心跳剥离、HDFS 配置统一、启动日志优化等 feature，并支持 connector 开发与作业升级答疑。"},{"lead":"Flink on K8s","body":"改造 Heapster，将 K8s 指标流式写入 Kafka，建设 Flink 计算资源大盘；覆盖 10+ 集群、约 15k node、1.5k 作业；灰度发布与跨集群 HA。"},{"lead":"Quota 与大促","body":"按部门 / 业务线 / NS / queue 量化分摊，作业 dry run 与最优队列推荐，支撑大促资源评估和碎片利用。"},{"lead":"ES 多集群","body":"统一配置与监控，管理集群 100+、节点 5000+、单集群索引 1000+，业务覆盖订单、支付、搜索、广告、推荐、云原生。"}],"results":["Flink 作业发布从「停作业再发」做成可热更新 / 热重启，大促期间计算资源可按业务线讲清楚","ES 运维从人肉变成平台，作业启动失败风险下降"]},{"company":"唯品会","role":"Hadoop 引擎核心负责人","period":"2016.04 – 2018.04","stack":["Hadoop","MapReduce","Hive","YARN","HDFS","Flume","Kafka","ELK"],"summary":"公司 Hadoop 引擎核心负责人：对 800+ 节点离线计算引擎（MapReduce / Hive / HDFS / YARN）的稳定性、源码调优、版本升级与热升级负责，而不是只做集群运维。同时补齐 Flume / Kafka / ELK 采集链路。","bullets":[{"lead":"Hadoop 引擎","body":"主导 Hadoop 引擎日常稳定性与源码级调优，patch 开发与迁移，制定灰度变更和热升级方案，800+ 节点处理能力与稳定性提升。"},{"lead":"YARN 与跨 DC","body":"优化 YARN 本地性调度，跨数据中心流量下降约 50%；推动业务按数据中心拆分并提供快速迁移。"},{"lead":"Flume / Kafka / ELK","body":"负责 Flume、Kafka 分区均衡与迁移工具；基于 ELK 采集 Spark Driver、Storm、HDFS NN 与 audit 日志；Flume 快速索引到 Elasticsearch，支持主键自定义。"}],"results":["离线引擎可热升级、可灰度，跨 DC 流量下降约一半，采集与检索链路从散装变成可运维系统"]},{"company":"五八同城","role":"高级工程师","period":"2015.03 – 2016.04","stack":["Hadoop","Hive","HBase","Flume","Kafka","Scala"],"bullets":[{"lead":"虫洞埋点","body":"核心开发无痕埋点平台，统一 PC / M / App 三端日志；Flume 落地 Hadoop，Kafka 接入增加 IP 过滤与 token，并用 Scala 做基础 ETL。"},{"lead":"Hadoop 数据平台","body":"主导 Hadoop / Kafka 平台运维：集群扩容、资源调度与 Job 分析、HDFS 安全、HBase 对外 API，以及 Flume 日志收集容错与监控告警。"}]},{"company":"郊区电信实业","role":"开发工程师","period":"2010.07 – 2015.03","stack":["Hadoop","Hive","Spark","MongoDB"],"bullets":[{"lead":"电网平台","body":"参与国家电网工程设计评审平台的功能设计、需求开发与测试。"},{"lead":"广告统计","body":"负责广告统计分析平台架构与 MongoDB 设计；业务量上来后迁到 Hadoop / Hive / Spark，做跨月多维统计与实时运营分析，支撑 UV / PV 与精准投放。"}]}],"aiTitle":"阿里云大数据 Agent Harness（在研 / 个人工程）","aiBody":["面向 DataWorks 体系的日常开发与运维，覆盖闭源 MaxCompute 与 EMR Serverless Spark + DLF 湖仓链路。以真实线上问题为样本，将排障、开发、运维解法结构化为约 150 条可调用 Skill，而不是散落在聊天记录里。","正在构建面向阿里云大数据平台的 Harness：指令、工具边界、校验与反馈闭环、人工确认。让 Agent 在权限与平台约束内完成查表、排作业、对账、定位失败任务等高频动作，避免对生产作业做不可逆操作。","目标是把「会用平台的人」的经验编码进仓库与工具层，使同类问题可复现、可校验、可交给 Agent 执行，从而降低个人重复劳动，也降低业务使用大数据开发数据应用的复杂度。"],"sectionSummary":"职业摘要","sectionStack":"技术栈","eduTitle":"教育与认证"},"en":{"currentRole":"Big Data Engineer","period":"May 2023 – Present","company":"X.D. Network · TapTap","yearsLabel":"16 years in data & realtime architecture","educationLine":"China Three Gorges University · Information and Computing Science · B.S. · 2006.09 – 2010.06","summary":"16 years in big-data and realtime compute. The first 12 years were open-source, self-hosted stacks: Hadoop / Hive / Spark / Flink / Kafka / Elasticsearch / Kubernetes. At Vipshop I owned the Hadoop engine on 800+ nodes (source-level tuning, version and hot upgrades). At Pinduoduo I did Flink 1.5 / 1.8 core engine R&D — performance tuning, hot restart / hot update — and ran Flink on K8s across 15k nodes. At Agora I shipped an in-house Flink distribution (900+ community patches). The last 3.5 years at TapTap I took that same skill set onto Alibaba Cloud DataWorks / MaxCompute / EMR Spark / DLF / Hologres and turned it into business results for gaming ads, recommendation, ADN and training. I can choose, migrate, dual-run and cost-compare between OSS and managed clouds, and encode on-call knowledge into an Agent Harness.","highlightsTitle":"Selected outcomes","highlights":[{"value":"+¥20M / yr","label":"Homepage ad real-time features"},{"value":"CPM +5%","label":"After extending real-time features to iOS"},{"value":"TCO −75–80%","label":"Monthly cost drop on ADN pipelines"},{"value":"3.7 → 2.8 PB","label":"DLF storage governance"},{"value":"20M QPS","label":"Agora Spark routing → Flink migration peak"},{"value":"60d → 1d","label":"Agora hybrid-cloud resource delivery"}],"skillsTitle":"Capabilities","skillGroups":[{"name":"Open-source compute & storage","items":["Flink 1.5 / 1.8 engine R&D, tuning, hot restart","Hadoop engine: MR / Hive / HDFS / YARN source-level tuning","Flink on YARN / Kubernetes platforms","Hudi / Paimon lakehouse table formats"]},{"name":"Realtime ingest & search","items":["Kafka / Flume / Logstash build & tune","Elasticsearch multi-cluster (5,000+ nodes)","Prometheus / ELK unified observability","Warehouse modeling, Hive / Spark SQL"]},{"name":"Alibaba Cloud","items":["DataWorks / MaxCompute","EMR Serverless Spark + DLF","Hologres / realtime Flink","Lakehouse migration, dual-run, TCO"]},{"name":"Engineering & languages","items":["Java / Scala / Python / Shell","Kubernetes / Ansible automation","Redis / MongoDB / MySQL","150+ Agent skills / Harness"]}],"stackGroups":[{"name":"Open source","items":["Hadoop","Hive","HDFS","YARN","Spark","Flink","Kafka","Flume","Hudi","HBase","Elasticsearch","Kubernetes","Prometheus","ELK"]},{"name":"Alibaba Cloud","items":["DataWorks","MaxCompute","EMR Spark","DLF","Paimon","Hologres","StarRocks","OSS"]}],"experienceTitle":"Experience","experienceIntro":"12 years of engine and platform work on open-source Hadoop / Spark / Flink / Kafka / ES — Hadoop engine owner at Vipshop, Flink 1.5 / 1.8 core engine R&D at Pinduoduo; 3.5 years at TapTap moving that skill set onto Alibaba Cloud managed products for gaming ads, rec, ADN and training.","jobs":[{"company":"X.D. Network · TapTap","role":"Big Data Engineer","period":"May 2023 – Present","stack":["DataWorks","MaxCompute","EMR Spark","DLF","Paimon","Flink","Hologres","Kafka","StarRocks"],"summary":"Owned solution design for ads / rec / ADN: realtime and batch architecture, cost, and lakehouse upgrade. Internally served business teams; externally used and stress-tested Alibaba Cloud big-data products.","projects":[{"title":"Gaming ads real-time feature platform: Android → iOS, project → platform","period":"2024 – 2025","tags":["Real-time features","Ad monetization","IEM","Flink"],"context":"Day-level features could not support homepage ad decisions; iOS was a gap; feature development was slow and hard to reuse in rec models.","bullets":[{"lead":"Full real-time path","body":"Designed user/item plus app, material, and UGC non-daily features; delivered accurate homepage attribution."},{"lead":"iOS coverage","body":"Extended the Android capability to iOS, closing a material product gap with positive business feedback."},{"lead":"Platformization","body":"Led homepage feature rebuild; the same design now serves ads and rec models and is landed on the IEM feature platform."}],"results":["Homepage ads +2%+ effect, conservatively >¥20M annual revenue","Core CPM +~5% after finer real-time feature engineering","Faster install/iOS feature delivery; features reused by rec models"]},{"title":"ADN / main-site real-time rebuild: the right product mix for TCO and freshness","period":"2024","tags":["Flink","Hologres","Realtime DW","TCO"],"context":"ADN logs and join pipelines were expensive and stale; main-site traffic splitting was rigid and instability amplified downstream.","bullets":[{"lead":"Main-site DWD","body":"Rebuilt split rules with dynamic routing and hot reload; standardized traffic and cut downstream blast radius."},{"lead":"ADN log realtime","body":"Re-designed the realtime path after a requirements study; stability, query efficiency, and flexibility all improved."},{"lead":"Join pipeline","body":"Rebuilt ADN ad-join on Flink + Hologres; freshness to ~1 minute."},{"lead":"Prediction logs","body":"Shipped realtime prediction-log pipelines for multiple downstream consumers."}],"results":["ADN request-log monthly cost −~80% (~¥40k/month)","ADN join monthly cost −~75% (~¥45k/month), with better delivery performance"]},{"title":"Next-gen lakehouse: vendor research and POC → PB-scale dual-run","period":"2025 – 2026","tags":["Lakehouse","EMR Spark","DLF","Migration","POC"],"context":"The company needed a controllable Data + AI path off MaxCompute without breaking ads/training, and had to prove Spark-on-lake could carry real load.","bullets":[{"lead":"Architecture choice","body":"Deep dives with cloud vendors and industry data platforms; target shape Spark-on-lake; validated Spark on OSS + DLF; cost/risk review of MC migration."},{"lead":"POC → MVP on real jobs","body":"End-to-end feasibility for ADN iOS training; expanded into a real migration workflow: schema/types, DDL diff, sync, job metadata, translation, validation."},{"lead":"Runtime ownership","body":"Drove DataWorks + EMR Serverless Spark + DLF environment issues across authz injection, UDF semantics, Paimon scan, snapshot expiry, capacity, long-job stability."},{"lead":"Migration as a service","body":"Full/incremental sync, T-3 truncate, partition adaption, dynamic table scope, backfill, metadata/schema consistency, owner handoff, lifecycle repair — 900+ tables in dual-run."},{"lead":"Storage & BI","body":"DLF storage governance; Spark jobs + StarRocks MVs moved some BI from ~75s to ~200ms."},{"lead":"Training cutover","body":"Helped IEM move sample processing and training IO onto EMR Spark + DLF; coarse-rank data+train 1.5 days → 0.5 day."},{"lead":"Product feedback","body":"Turned authz/resource isolation, federation, Kyuubi/KB Gateway, session reuse, and cross-language UDFs into a reusable gap list for the platform."}],"results":["Storage 3.7PB → 2.8PB; small files 6.5M → 1.6M","ADN migration in dual-run; risks systematically closed ahead of cutover","Quantified wins on training and BI; reusable migration SOP"]},{"title":"Runtime stability and component lifecycle","period":"2026","tags":["Kafka","Hologres","Stream-batch","EOS"],"context":"Primary Kafka saturated bandwidth at peaks; Hologres 2.x faced product EOS and compatibility incidents with adjacent components.","bullets":[{"lead":"Kafka","body":"Changed consumer-group auto-creation to relieve peak bandwidth saturation."},{"lead":"Hologres","body":"Led 2.2 → 4.x upgrade to clear EOS risk and compatibility-driven outages."},{"lead":"Unified path","body":"Kept proving the DW / Spark / Flink / Holo / StarRocks / DLF / lake-table path; filling monitoring, capacity, and incident SOP."}],"results":["Moved from one-off migration tools to a runtime system: stability, authz, storage move, and consistency closed-loop","Weekly exposure of DW + Spark + DLF gaps turned into a reusable issue list"]}]},{"company":"Bilibili","role":"Senior Engineer (3-3)","period":"Sep 2022 – Dec 2022","stack":["Flink","Kubernetes","Hudi","Kafka"],"summary":"Realtime compute team: Flink containerization and Flink + Apache Hudi lakehouse plumbing — the engine-side feel I later used at TapTap.","bullets":[{"lead":"Flink on K8s","body":"Landed Flink jobs on Kubernetes so delivery and scale-out were less coupled to physical clusters."},{"lead":"Flink + Hudi","body":"Helped stand up Flink + Apache Hudi ingestion: job onboarding, table format, compaction and operational support."}]},{"company":"Agora","role":"Architect / Leader","period":"Aug 2020 – Sep 2022","stack":["Flink","Spark","YARN","Kafka","Prometheus","Elasticsearch","Jenkins"],"summary":"Owned the open-source Flink realtime platform from research to a stable in-house distribution on YARN, plus Elasticsearch stability, Prometheus unification and hybrid-cloud delivery. RTC latency and recovery constraints map directly onto later gaming data planes.","bullets":[{"lead":"In-house Flink distro","body":"Designed Agora’s Flink stack on YARN, three in-house releases, job monitoring via YARN REST API, 900+ community patches (FLIP-145 TVF / 152 Hive compat / 165 flame graph / 136 stream-table / 162 time functions) and Jenkins CI/CD for business-submitted patches."},{"lead":"Engine","body":"Temporal-join freshness, state-leak control, SQL scaffolding and shared UDFs; Kafka sink dynamic topics; idle-source watermark advance."},{"lead":"Spark → Flink","body":"Moved Spark routing that carried report logs (~20M QPS peak) onto Flink, 100+ jobs, cutting peak jitter and raising utilization."},{"lead":"Observability","body":"Collapsed Zabbix/InfluxDB/OpenTSDB into Prometheus; host/component/business/owner mapping; coverage +90%; alert rules 0 → 120+."},{"lead":"ES","body":"Unified config and grey release, auto disk-out restart, log+JMX+exporter alerts; availability 95% → 99.9%."},{"lead":"Hybrid cloud","body":"Domestic DC plan and early hybrid cloud; 29 clusters / 300+ legacy-network hosts / 200+ EOS boxes retired; resource lead time 60d → 1d, component delivery 7d → 4h."}],"results":["Realtime compute became a company platform with multi-DC mutual monitoring","Private/hybrid delivery became a repeatable motion"]},{"company":"Pinduoduo","role":"Architect / Flink core engine R&D","period":"Apr 2018 – Jul 2020","stack":["Flink 1.5 / 1.8","Kubernetes","Kafka","HDFS","Elasticsearch"],"summary":"Flink core engine R&D on 1.5 / 1.8: engine features, performance tuning, hot restart / hot update and checkpoint governance. Also turned Flink-on-Kubernetes into a measurable compute platform, and owned 100+ Elasticsearch clusters. Promo-season quota and overcommit are the same conversation as cloud elasticity.","bullets":[{"lead":"Flink engine","body":"Engine-side work on Flink 1.5 / 1.8: source-level tuning; hot restart / hot update to cut job publish and validation time; incremental checkpoint and small-file compaction for long-running jobs; JM/TM heartbeat split, HDFS config unification, startup-log work; connector support and upgrade Q&A."},{"lead":"Flink on K8s","body":"Streamed Heapster metrics to Kafka and built a Flink compute dashboard across 10+ clusters, ~15k nodes, 1.5k jobs; grey release and cross-cluster HA."},{"lead":"Quota","body":"Chargeback by dept / line / NS / queue, dry-run and best-queue hints for promo planning and fragment packing."},{"lead":"ES","body":"100+ clusters, 5,000+ nodes, 1,000+ indices per large cluster, spanning order, pay, search, ads, rec and cloud-native teams."}],"results":["Flink jobs could hot-update / hot-restart instead of stop-and-ship; compute explainable by business line during promos","ES ops became a platform; fewer job start failures"]},{"company":"Vipshop","role":"Core owner, Hadoop engine","period":"Apr 2016 – Apr 2018","stack":["Hadoop","MapReduce","Hive","YARN","HDFS","Flume","Kafka","ELK"],"summary":"Core owner of the Hadoop engine: stability, source-level tuning, version upgrades and hot upgrades for MapReduce / Hive / HDFS / YARN on 800+ nodes — engine work, not just cluster ops. Also Flume / Kafka / ELK collection.","bullets":[{"lead":"Hadoop engine","body":"Day-to-day engine stability and source-level tuning, patch development and migration, grey-change process and hot-upgrade plan on 800+ nodes."},{"lead":"YARN & cross-DC","body":"YARN locality cut cross-DC traffic ~50%; split tenants by DC with a fast-move path."},{"lead":"Flume / Kafka / ELK","body":"Flume/Kafka rebalance tools; ELK for Spark driver, Storm, HDFS NN and audit; Flume index-into-Elasticsearch with custom primary keys."}],"results":["Offline engine could grey and hot-upgrade; cross-DC traffic roughly halved; ingest and search became operable systems"]},{"company":"58.com","role":"Senior Engineer","period":"Mar 2015 – Apr 2016","stack":["Hadoop","Hive","HBase","Flume","Kafka","Scala"],"bullets":[{"lead":"Wormhole tracking","body":"Core dev on a no-trace tracking platform unifying PC/M/App logs; Flume to Hadoop; Kafka ingest with IP filter and token; Scala ETL."},{"lead":"Hadoop data platform","body":"Hadoop / Kafka ops: cluster expansion, resource and job analysis, HDFS security, HBase APIs, Flume collection failover and alerting."}]},{"company":"郊区电信实业","role":"Software Engineer","period":"Jul 2010 – Mar 2015","stack":["Hadoop","Hive","Spark","MongoDB"],"bullets":[{"lead":"State Grid","body":"Feature design, delivery and tests for a State Grid engineering-review platform."},{"lead":"Ad analytics","body":"Architecture and MongoDB design for an ad stats platform; later Hadoop / Hive / Spark for cross-month stats and realtime ops, UV/PV and targeting as volume grew."}]}],"aiTitle":"Alibaba Cloud big-data Agent Harness (personal / in progress)","aiBody":["Built around daily DataWorks development and ops, covering closed-source MaxCompute and EMR Serverless Spark + DLF. Real incidents are encoded as ~150 callable skills — not lost in chat logs.","The Harness defines instructions, tool boundaries, validation/feedback loops, and human confirmation so an agent can inspect tables, jobs, reconciliation, and failed tasks inside platform permissions — never irreversible production writes.","The point is agent engineering, not a demo: encode “people who know the platform” into the repo so the same work is repeatable, checkable, and delegable."],"sectionSummary":"Summary","sectionStack":"Tech stack","eduTitle":"Education"}}</script>
+<script>
+const pack = JSON.parse(document.getElementById("data").textContent);
+let lang = "zh";
+const $ = (s) => document.getElementById(s);
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[c]));
+}
+
+function jobHtml(job) {
+  const stack = (job.stack || []).map((s) => "<span>" + esc(s) + "</span>").join("");
+  const projects = (job.projects || []).map((p, i) => {
+    const n = String(i + 1).padStart(2, "0");
+    const bullets = p.bullets.map((b) => "<li><strong>" + esc(b.lead) + ".</strong> <span class=\"muted\">" + esc(b.body) + "</span></li>").join("");
+    const results = p.results.map((r) => "<li>" + esc(r) + "</li>").join("");
+    return '<div class="proj"><div class="proj-t"><span class="num">' + n + '</span><h4>' + esc(p.title) + '</h4></div><p class="tags">' + esc(p.period) + " · " + esc(p.tags.join(" · ")) + '</p><p class="ctx">' + esc(p.context) + '</p><ul class="clean">' + bullets + '</ul><ul class="results">' + results + "</ul></div>";
+  }).join("");
+  const bullets = (job.bullets || []).map((b) => "<li><strong>" + esc(b.lead) + ".</strong> <span class=\"muted\">" + esc(b.body) + "</span></li>").join("");
+  const results = (job.results || []).map((r) => "<li>" + esc(r) + "</li>").join("");
+  return '<section class="job"><header class="job-h"><div><h3>' + esc(job.company) + '</h3><p class="who">' + esc(job.role) + '</p></div><p class="subtle">' + esc(job.period) + "</p></header>"
+    + (job.summary ? '<p class="lead">' + esc(job.summary) + "</p>" : "")
+    + (stack ? '<div class="stack">' + stack + "</div>" : "")
+    + projects
+    + (bullets ? '<ul class="clean">' + bullets + "</ul>" : "")
+    + (results ? '<ul class="results">' + results + "</ul>" : "")
+    + "</section>";
+}
+
+function render() {
+  const t = pack[lang];
+  const p = pack.profile;
+  const name = p.nameZh + "  " + p.name;
+  document.documentElement.lang = lang;
+  document.title = name + " · Resume";
+  $("lang").textContent = lang === "zh" ? "English" : "中文";
+  $("print").textContent = lang === "zh" ? "打印 / PDF" : "Print / PDF";
+  const skills = t.skillGroups.map((g) => '<div class="skill"><h3>' + esc(g.name) + "</h3><ul>" + g.items.map((i) => "<li>" + esc(i) + "</li>").join("") + "</ul></div>").join("");
+  const stacks = t.stackGroups.map((g) => '<div class="skill"><h3>' + esc(g.name) + '</h3><div class="chips">' + g.items.map((i) => '<span class="chip">' + esc(i) + "</span>").join("") + "</div></div>").join("");
+  const metrics = t.highlights.map((h) => '<div class="metric"><b>' + esc(h.value) + "</b><span>" + esc(h.label) + "</span></div>").join("");
+  const ai = t.aiBody.map((x) => "<p>" + esc(x) + "</p>").join("");
+  $("sheet").innerHTML =
+    '<div class="layout"><aside class="rail">'
+    + '<p class="kicker">' + esc(t.yearsLabel) + "</p>"
+    + "<h1>" + esc(name) + "</h1>"
+    + '<p class="role">' + esc(t.currentRole) + " · " + esc(t.company) + "</p>"
+    + '<div class="contact"><div>' + esc(p.phone) + "</div><div><a href=\"mailto:" + esc(p.email) + '\">' + esc(p.email) + "</a></div></div>"
+    + '<p class="label">' + esc(t.skillsTitle) + "</p>" + skills
+    + '<p class="label">' + esc(t.sectionStack) + "</p>" + stacks
+    + '</aside><div class="main"><div class="head"><p class="muted">' + esc(t.yearsLabel) + '</p><p style="margin-top:6px">' + esc(t.company) + " · " + esc(t.currentRole) + '</p><p class="subtle" style="margin-top:6px">' + esc(t.period) + "</p></div>"
+    + "<h2>" + esc(t.sectionSummary) + '</h2><p class="lead">' + esc(t.summary) + "</p>"
+    + "<h2>" + esc(t.highlightsTitle) + '</h2><div class="metrics">' + metrics + "</div>"
+    + "<h2>" + esc(t.experienceTitle) + '</h2><p class="lead">' + esc(t.experienceIntro) + "</p>"
+    + t.jobs.map(jobHtml).join("")
+    + '<section class="block ai"><h2 style="margin-top:0">' + esc(t.aiTitle) + "</h2>" + ai + "</section>"
+    + '<section class="block"><h2 style="margin-top:0">' + esc(t.eduTitle) + '</h2><p class="lead">' + esc(lang === "zh" ? p.education : t.educationLine) + "</p></section>"
+    + "</div></div>";
+}
+
+$("lang").onclick = () => { lang = lang === "zh" ? "en" : "zh"; render(); };
+$("print").onclick = () => window.print();
+render();
+</script>
+</body>
+</html>
