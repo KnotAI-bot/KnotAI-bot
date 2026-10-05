@@ -1,6 +1,6 @@
 [English](./Resume.en.md)
 
-# 洪伟  Wally Hung
+# 洪伟  Wally Hong
 
 16 年大数据与实时架构  |  心动科技 · TapTap  ·  大数据开发工程师  ·  2023.05 – 至今
 177-4081-7241  ·  hongwei200612@gmail.com
