@@ -1,6 +1,6 @@
 [中文](./README.md)
 
-# 洪伟  Wally Hung
+# 洪伟  Wally Hong
 
 16 years in data & realtime architecture  |  X.D. Network · TapTap  ·  Big Data Engineer  ·  May 2023 – Present
 177-4081-7241  ·  hongwei200612@gmail.com
