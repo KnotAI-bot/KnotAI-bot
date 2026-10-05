@@ -1,4 +1,4 @@
-# 洪伟 · Wally Hung
+# 洪伟 · Wally Hong
 
 **[knotai-bot.github.io](https://knotai-bot.github.io/)**
 
